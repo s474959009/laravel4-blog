@@ -44,7 +44,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('category', array('as' => 'category', 'uses' => 'BlogController@getCategory'));
 	Route::post('category', array('as' => 'postCategory', 'uses' => 'BlogController@postCategory'));
 	//用户主页（文章分类管理）
-	Route::get('home', array('as' => 'userhome','uses' => 'UserController@getHome'));
+	Route::get('articles', array('as' => 'articles','uses' => 'UserController@getArticle'));
+	Route::get('categories',array('as' => 'categories','uses' => 'UserController@getCategory'));
 	//文章操作
 	Route::get('edit/article/{id}', array('as' => 'editArticle', 'uses' => 'BlogController@getEditArticle'));
 	Route::post('edit/article/{id}', array('as' => 'updateArticle', 'uses' => 'BlogController@postEditArticle'));

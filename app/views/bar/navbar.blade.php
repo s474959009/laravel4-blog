@@ -28,7 +28,7 @@ $is_active = function ($name='') use ($active)
 				<li><a class="blog-nav-item {{ $is_active('logup')}}"  href="{{ route('logup') }}">注册</a></li>
 	@elseif(!Auth::user()->is_admin)
 				<li><a class="blog-nav-item {{ $is_active('home')}}" href="{{ route('home') }}" >首页</a></li>
-				<li><a class="blog-nav-item {{ $is_active('userhome')}}" href="{{ route('userhome') }}">管理</a></li>
+				<li><a class="blog-nav-item {{ $is_active('userhome')}}" href="{{ route('articles') }}">管理</a></li>
 				<li><a class="blog-nav-item {{ $is_active('send')}}" href="{{ route('send') }}">发布</a></li>
 				<li><a class="blog-nav-item {{ $is_active('logout')}}" href="{{ route('logout') }}">退出</a></li>
 	@endif

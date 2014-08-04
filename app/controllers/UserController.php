@@ -74,11 +74,20 @@ class UserController extends BaseController {
 		}
 	}
 
-	public function getHome()
+	public function getArticle()
 	{	$user = Auth::user()->id;
-		$articles = Article::where('user_id', $user)->orderBy('updated_at', 'desc')->paginate(6);
+		if($user){
+			$articles = Article::where('user_id', $user)->orderBy('updated_at', 'desc')->paginate(6);
+			return View::make('user.article')->with(compact('articles'));
+		} else {
+			return Redirect::to('login')->with('error','请登录！');
+		}
+	}
+
+	public function getCategory()
+	{
 		$categories = Category::orderBy('id')->paginate(6);
-		return View::make('user.home')->with(compact('articles', 'categories'));
+		return View::make('user.category')->with(compact('categories'));
 	}
 
 }

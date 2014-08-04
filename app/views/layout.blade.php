@@ -2,9 +2,7 @@
 <html>
 <head>
 	<title>Test</title>
-   	<style type="text/css">
-   	@include('style')
-   	</style> 
+	{{HTML::style('css/style.css')}}
 </head>
 <body>
 	@include('bar.navbar')

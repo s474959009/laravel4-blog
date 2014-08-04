@@ -10,7 +10,7 @@ $is_active = function ($name='') use ($activeCategory)
 <div id="asidepart">
         <aside class='clearfix'>
             <div class="categorieslist">
-                <p class="asidetitle " ><a href="{{ route('home') }}">所有文章</a></p>
+                <p class="asidetitle " ><a class="{{ $is_active('all') }}" href="{{ route('home') }}">所有文章</a></p>
                   <ul>
                     @foreach($categories as $category)
                     <li>

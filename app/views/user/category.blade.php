@@ -1,0 +1,48 @@
+@extends('layout', array('active' => 'userhome'))
+@section('content')
+<div id="main" class="moveMain typecho-psot controls clearfix">
+    @include('notify')
+     <h1>
+        分类管理
+        <div class="pull-right">
+            <a href="{{ Route('category') }}" class="btn btn-sm btn-primary">
+                添加新分类
+            </a>
+        </div>
+    </h1>
+        <table class="table table-striped  table-bordered table-hover">
+              <tbody>
+                <tr>
+                    <th width="35%">分类名称</th>
+                    <th width="25%">创建时间</th>
+                    <th width="20%">文章总数</th>
+                    <th width="20%">操作</th>
+                </tr>
+                @foreach ($categories as $category)
+                <tr>
+                    <td>
+                        <a href="{{ route('categoryArticles', $category->id) }}" target="_blank">
+                                                {{{ $category->name }}}
+                        </a>
+                    </td>
+                    <td>{{{ $category->created_at }}}</td>
+                    <td>{{{ Article::where('category_id', '=', $category->id)->count()}}}</td>
+                    <td class="btn-group">
+                        <a href="{{ route('editCategory', $category->id) }}" class="btn btn-xs">编辑</a>
+                        <a href="{{ route('delCategory', $category->id) }}" class="btn btn-xs btn-danger">
+                        删除</a>                      
+                    </td>
+                </tr>
+                @endforeach
+                  <tr>
+                  <td colspan="4">
+                  <nav id="page-nav" class="clearfix">
+                  {{$categories->links()}}
+                  </nav>
+                  </td>
+                  </tr>
+            </tbody>
+        </table>
+</div>
+@include('user.side', array('activeSide' =>'categories'))
+@stop

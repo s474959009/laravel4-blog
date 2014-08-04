@@ -151,7 +151,7 @@ class BlogController extends BaseController
 			$article->content = $data['content'];
 			$article->slug = $data['slug'];
 			if($article->save()) {
-				return Redirect::to('home')->with('success', '文章修改成功');
+				return Redirect::to('articles')->with('success', '文章修改成功');
 			} else {
 					return Redirect::back()->withInput()->with('error', '文章修改失败');
 				}
@@ -168,7 +168,7 @@ class BlogController extends BaseController
     	{
     		$del = Article::find($id)->delete();
 	    	if($del) {
-	       		return Redirect::to('home')->with('success','文章删除成功'); 		
+	       		return Redirect::to('articles')->with('success','文章删除成功'); 		
 	    	} else {
 	    		return Redirect::back()->with('error','文章删除失败');
 	    	}
@@ -205,12 +205,12 @@ class BlogController extends BaseController
 			$category->name = $data['name'];
 
 			if($category->save()) {
-				return Redirect::to('home')->with('success', '分类修改成功');
+				return Redirect::to('categories')->with('success', '分类修改成功');
 			} else {
-				return Redirect::to('home')->with('error', '分类修改失败');
+				return Redirect::to('categories')->with('error', '分类修改失败');
 			} 
 		} else {
-			return Redirect::to('home')->withErrors($validator);
+			return Redirect::to('categories')->withErrors($validator);
 		}
     }
 
@@ -220,9 +220,9 @@ class BlogController extends BaseController
     	$del = Category::find($id)->delete();
 
 	    if($del) {
-	      	return Redirect::to('home')->with('success','分类删除成功'); 		
+	      	return Redirect::to('categories')->with('success','分类删除成功'); 		
 	    } else {
-	   	 	return Redirect::to('home')->with('error','分类删除失败');
+	   	 	return Redirect::to('categories')->with('error','分类删除失败');
 	    }
     }
 
